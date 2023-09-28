@@ -1,88 +1,23 @@
 using System;
-using System.Collections.Generic;
 
-namespace SimpleJournal
+class Program
 {
-    class JournalEntry
+    static void Main(string[] args)
     {
-        public DateTime Date { get; set; }
-        public string Content { get; set; }
-    }
+        Fraction f1 = new Fraction();
+        Console.WriteLine(f1.GetFractionString());
+        Console.WriteLine(f1.GetDecimalValue());
 
-    class Program
-    {
-        static List<JournalEntry> journalEntries = new List<JournalEntry>();
+        Fraction f2 = new Fraction(5);
+        Console.WriteLine(f2.GetFractionString());
+        Console.WriteLine(f2.GetDecimalValue());
 
-        static void Main(string[] args)
-        {
-            bool continueRunning = true;
+        Fraction f3 = new Fraction(3, 4);
+        Console.WriteLine(f3.GetFractionString());
+        Console.WriteLine(f3.GetDecimalValue());
 
-            while (continueRunning)
-            {
-                Console.WriteLine("Welcome to the journal program");
-                Console.WriteLine("Please select one of the following choices:");
-                Console.WriteLine("1. Write");
-                Console.WriteLine("2. Display");
-                Console.WriteLine("3. Load");
-                Console.WriteLine("4. Save");
-                Console.WriteLine("5. Quit");
-                Console.Write("What will you like to do? ");
-
-                string choice = Console.ReadLine();
-
-                 switch (choice)
-                {
-                    case "1":
-                        AddJournalEntry();
-                        break;
-
-                    case "2":
-                        ViewJournalEntries();
-                        break;
-
-                    case "3":
-                        continueRunning = false;
-                        break;
-
-                    default:
-                        Console.WriteLine("Invalid choice. Please try again.");
-                        break;
-                }
-            }
-        }
-
-        static void AddJournalEntry()
-        {
-            Console.WriteLine("Enter the date (e.g., YYYY-MM-DD):");
-            if (DateTime.TryParse(Console.ReadLine(), out DateTime date))
-            {
-                Console.WriteLine("Enter your journal entry:");
-                string content = Console.ReadLine();
-
-                JournalEntry entry = new JournalEntry
-                {
-                    Date = date,
-                    Content = content
-                };
-
-                journalEntries.Add(entry);
-                Console.WriteLine("Journal entry added successfully.");
-            }
-            else
-            {
-                Console.WriteLine("Invalid date format. Please use YYYY-MM-DD.");
-            }
-        }
-
-        static void ViewJournalEntries()
-        {
-            Console.WriteLine("Journal Entries:");
-            foreach (var entry in journalEntries)
-            {
-                Console.WriteLine($"Date: {entry.Date.ToString("yyyy-MM-dd")}");
-                Console.WriteLine($"Entry: {entry.Content}");
-                Console.WriteLine();
-            }
-        }
+        Fraction f4 = new Fraction(1, 3);
+        Console.WriteLine(f4.GetFractionString());
+        Console.WriteLine(f4.GetDecimalValue());
     }
 }
