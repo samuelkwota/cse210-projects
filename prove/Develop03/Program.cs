@@ -1,32 +1,36 @@
-using System;
-
-public class PromptGenerator
-{
-    public string GeneratePrompt()
-    {
-        // Generate a random number between 1 and 10
-        Random random = new Random();
-        int randomNumber = random.Next(1, 11);
-
-        // Check if the random number is even
-        if (randomNumber % 2 == 0)
-        {
-            return "Please enter your name: ";
-        }
-        else
-        {
-            return "What is your favorite color? ";
-        }
-    }
-}
-
 class Program
 {
     static void Main()
     {
-        PromptGenerator promptGenerator = new PromptGenerator();
-        string prompt = promptGenerator.GeneratePrompt();
+        
+        var reference = new Reference("D&C", 6, 28);
+        var wordsToHide = new List<string>
+        {
+            "And now, behold, I give unto you,", "and unto my servant Joseph,", "the keys of this gift,", "which shall bring to light this ministry;", "and in the mouth of two or three witnesses", "shall every word be established."
+        };
+        var scripture = new Scripture(reference, wordsToHide);
 
-        Console.WriteLine(prompt);
+        bool quit = false;
+
+        while (!scripture.AllWordsHidden() && !quit)
+        {
+            Console.Clear(); 
+            scripture.Display();
+            Console.WriteLine("Press Enter to continue, or type 'quit' to finish:");
+            string input = Console.ReadLine();
+
+            if (input.ToLower() == "quit")
+            {
+                quit = true;
+            }
+            else
+            {
+                scripture.HideNextWord();
+            }
+        }
+
+        Console.Clear(); 
+        scripture.Display();
+        Console.WriteLine("All the words are hidden. You've successfully memorized the scripture! :)");
     }
 }
