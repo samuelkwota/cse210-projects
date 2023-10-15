@@ -1,0 +1,2 @@
+Simple,I will be finishing this week assignment this week,100,1,True
+Checklist,7 Week for C# assignment,100,5,False
