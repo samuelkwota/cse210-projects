@@ -1,3 +1,0 @@
-Simple,church: I will go to church,50,1,True
-Eternal,Meeting: I will go to meeting,50,1,False
-Checklist,Temple: I will be going to the temple,100,1,False
